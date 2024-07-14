@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
-import '../../model/response_product/response_product.dart';
+import '../../future/product/data/model/response_product/response_product.dart';
 import 'api_constants.dart';
 
 part 'api_service.g.dart';

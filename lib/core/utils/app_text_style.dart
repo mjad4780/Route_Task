@@ -17,7 +17,7 @@ TextStyle _textStyle({
 
 // bold style
 TextStyle boldStyle({
-  Color color = AppColors.white,
+  Color color = AppColor.white,
   double fontSize = 32,
 }) =>
     _textStyle(
@@ -26,10 +26,9 @@ TextStyle boldStyle({
       fontWeight: FontWeight.bold,
     );
 
-
 // regular style
 TextStyle regularStyle({
-  Color color = AppColors.white,
+  Color color = AppColor.white,
   double fontSize = 24,
 }) =>
     _textStyle(

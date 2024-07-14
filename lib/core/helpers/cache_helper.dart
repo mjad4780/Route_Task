@@ -69,7 +69,7 @@ class CacheHelper {
     }
   }
 
-  Future<void> Cachedlanguagecode(String languagecode) async {
+  Future<void> cachedlanguagecode(String languagecode) async {
     sharedPreferences.setString("LOCALE", languagecode);
   }
 
@@ -80,5 +80,10 @@ class CacheHelper {
     } else {
       return "en";
     }
+  }
+
+  //
+  Future<void> setString(String key, String value) async {
+    await sharedPreferences.setString(key, value);
   }
 }

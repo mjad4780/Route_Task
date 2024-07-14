@@ -5,13 +5,13 @@ import '../utils/app_text_style.dart';
 
 ThemeData getAppTheme() {
   return ThemeData(
-    primaryColor: AppColors.primary,
+    primaryColor: AppColor.primary,
     //scaffoldBackgroundColor
-    scaffoldBackgroundColor: AppColors.white,
+    scaffoldBackgroundColor: AppColor.white,
 
     //appBar Theme
     appBarTheme: const AppBarTheme(
-      backgroundColor: AppColors.primary,
+      backgroundColor: AppColor.primary,
     ),
 
     //text theme
@@ -23,7 +23,7 @@ ThemeData getAppTheme() {
     //button theme
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-          backgroundColor: AppColors.primary,
+          backgroundColor: AppColor.primary,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8),
           )),
@@ -34,7 +34,7 @@ ThemeData getAppTheme() {
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(50),
         // borderSide: const BorderSide(
-        //   color: AppColors.grey,
+        //   color: AppColor.grey,
         // ),
       ),
 
@@ -42,7 +42,7 @@ ThemeData getAppTheme() {
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(50),
         // borderSide: const BorderSide(
-        //   color: AppColors.grey,
+        //   color: AppColor.grey,
         // ),
       ),
 
@@ -50,7 +50,7 @@ ThemeData getAppTheme() {
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(50),
         // borderSide: const BorderSide(
-        //   color: AppColors.grey,
+        //   color: AppColor.grey,
         // ),
       ),
 
@@ -58,25 +58,25 @@ ThemeData getAppTheme() {
       errorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(50),
         // borderSide: const BorderSide(
-        //  color: AppColors.grey,
+        //  color: AppColor.grey,
         // ),
       ),
 
       //hint text
-      hintStyle: boldStyle(color: AppColors.grey, fontSize: 16),
+      hintStyle: boldStyle(color: AppColor.grey, fontSize: 16),
 
       // filled: true,
-      // fillColor: AppColors.backGroundTextField,
+      // fillColor: AppColor.backGroundTextField,
     ),
 
     // text button Style ..
     textButtonTheme: TextButtonThemeData(
       style: ButtonStyle(
-        foregroundColor: MaterialStateProperty.all(
-          AppColors.grey,
+        foregroundColor: WidgetStateProperty.all(
+          AppColor.grey,
         ),
-        textStyle: MaterialStateProperty.all(
-          boldStyle(color: AppColors.grey, fontSize: 16),
+        textStyle: WidgetStateProperty.all(
+          boldStyle(color: AppColor.grey, fontSize: 16),
         ),
       ),
     ),
