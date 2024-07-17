@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:route_task/core/utils/app_assets.dart';
 
-import '../../../core/get_it/get_it.dart';
-import '../../../core/helpers/cache_helper.dart';
 import '../../../core/helpers/spacing.dart';
 import 'widget/product_bloc_listener.dart';
 import 'widget/search_and_cart_component.dart';
@@ -37,11 +35,6 @@ class ProductScreen extends StatelessWidget {
             const SearchAndCartComponent(),
             verticalSpace(12),
             const ProductBlocListener(),
-            IconButton(
-                onPressed: () {
-                  getIt<CacheHelper>().clearData();
-                },
-                icon: const Icon(Icons.remove)),
           ]),
         ),
       ),

@@ -43,20 +43,20 @@ class ProductComponent extends StatelessWidget {
             Stack(
               children: [
                 // Image And Error Image
-                // Padding(
-                //   padding: const EdgeInsets.all(1.0),
-                //   child: image.isNotEmpty
-                //       ? CachedNetworkImage(
-                //           imageUrl: image,
-                //           fit: BoxFit.cover,
-                //           height: 80.w,
-                //           width: double.infinity,
-                //         )
-                //       : const Icon(
-                //           Icons.error,
-                //           size: 25,
-                //         ),
-                // ),
+                Padding(
+                  padding: const EdgeInsets.all(1.0),
+                  child: image.isNotEmpty
+                      ? CachedNetworkImage(
+                          imageUrl: image,
+                          fit: BoxFit.cover,
+                          height: 80.w,
+                          width: double.infinity,
+                        )
+                      : const Icon(
+                          Icons.error,
+                          size: 25,
+                        ),
+                ),
 
                 // Heart Icon
                 Favorite(

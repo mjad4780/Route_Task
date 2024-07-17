@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:route_task/core/extensions/extention_navigator.dart';
 import 'package:route_task/future/product/logic/product_cubit.dart';
 import 'package:route_task/future/product/ui/widget/card_product.dart';
 
