@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import '../../future/product/data/model/response_product/response_product.dart';
@@ -10,6 +12,6 @@ abstract class ApiService {
   factory ApiService(Dio dio, {String baseUrl}) = _ApiService;
 
   ///Product
-  @POST(ApiConstants.products)
+  @GET(ApiConstants.products)
   Future<ResponseProduct> product();
 }

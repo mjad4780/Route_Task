@@ -2,13 +2,19 @@ import 'package:route_task/future/product/data/model/response_product/product.da
 import 'package:route_task/future/product/data/repo/local_product.dart';
 
 import '../../../../core/errors/expentions.dart';
+import '../../../../core/get_it/get_it.dart';
+import '../../../../core/helpers/cache_helper.dart';
+import '../../../../core/helpers/network_info.dart';
 import '../../../../core/networking/api_result.dart';
 import '../../../../core/networking/api_service.dart';
 
 class RepoProduct {
   final ApiService _apiService;
   final NetworkInfo networkInfo;
-  RepoProduct(this._apiService, this.networkInfo);
+  RepoProduct(
+    this._apiService,
+    this.networkInfo,
+  );
 
   /// :GetProduct
 
@@ -16,7 +22,9 @@ class RepoProduct {
     if (await networkInfo.isConnected!) {
       try {
         final response = await _apiService.product();
-        await CacheHelpers.cacheproductsData(response.products);
+        if (getIt<CacheHelper>().getData(key: 'product') == null) {
+          await CacheHelpers.cacheproductsData(response.products);
+        }
         return ApiResult.success(response.products);
       } catch (e) {
         return ApiResult.failure(ErrorHandler.handle(e));
@@ -26,9 +34,4 @@ class RepoProduct {
       return ApiResult.success(product);
     }
   }
-}
-
-class NetworkInfo {
-  // ignore: prefer_typing_uninitialized_variables
-  var isConnected;
 }

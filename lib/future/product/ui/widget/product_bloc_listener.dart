@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:route_task/core/extensions/extention_navigator.dart';
 import 'package:route_task/future/product/logic/product_cubit.dart';
+import 'package:route_task/future/product/ui/widget/card_product.dart';
 
 import '../../../../core/theming/styles.dart';
 import '../../../../core/utils/app_colors.dart';
@@ -12,35 +12,49 @@ class ProductBlocListener extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<ProductCubit, ProductState>(
+    return BlocConsumer<ProductCubit, ProductState>(
       listenWhen: (previous, current) =>
-          current is Loading || current is Success || current is Error,
-      listener: (context, state) {
-        state.whenOrNull(
+          current is Loading ||
+          current is Success ||
+          current is Error ||
+          current is Search,
+      builder: (context, state) {
+        return state.maybeWhen(
           loading: () {
-            showDialog(
-              context: context,
-              builder: (context) => const Center(
-                child: CircularProgressIndicator(
-                  color: AppColor.mainBlue,
-                ),
+            return const Center(
+              child: CircularProgressIndicator(
+                color: AppColor.mainBlue,
               ),
             );
           },
-          success: () {
-            context.pop();
+          success: (products) {
+            // context.pop();
+            return CardProduct(product: products!);
+          },
+          search: (search) {
+            if (search!.isEmpty) {
+              return const Center(
+                  child: Text(
+                      'Sorry ,you will not find this product \n                    but smile'));
+            } else {
+              return CardProduct(product: search);
+            }
           },
           error: (error) {
-            setupErrorState(context, error);
+            return Text(error);
+            // setupErrorState(context, error);
+          },
+          orElse: () {
+            return const SizedBox.shrink();
           },
         );
       },
-      child: const SizedBox.shrink(),
+      listener: (BuildContext context, ProductState state) {},
     );
   }
 
   void setupErrorState(BuildContext context, String error) {
-    context.pop();
+    // context.pop();
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
@@ -56,7 +70,7 @@ class ProductBlocListener extends StatelessWidget {
         actions: [
           TextButton(
             onPressed: () {
-              context.pop();
+              // context.pop();
             },
             child: Text(
               'Got it',
@@ -67,19 +81,4 @@ class ProductBlocListener extends StatelessWidget {
       ),
     );
   }
-  // Widget setupSuccess(specializationsList) {
-  //   return Expanded(
-  //     child: Column(
-  //       children: [
-  //         DoctorsSpecialityListView(
-  //           specializationDataList: specializationsList ?? [],
-  //         ),
-  //         verticalSpace(8),
-  //         DoctorsListView(
-  //           doctorsList: specializationsList?[0]?.doctorsList,
-  //         ),
-  //       ],
-  //     ),
-  //   );
-  // }
 }

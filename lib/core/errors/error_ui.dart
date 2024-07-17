@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:route_task/core/extensions/extention_navigator.dart';
 
 void setupErrorState(BuildContext context, String error) {
-  context.pop();
+  // context.pop();
   showDialog(
     context: context,
     builder: (context) => AlertDialog(
@@ -18,7 +18,7 @@ void setupErrorState(BuildContext context, String error) {
       actions: [
         TextButton(
           onPressed: () {
-            context.pop();
+            // context.pop();
           },
           child: const Text(
             'Got it',

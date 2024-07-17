@@ -28,4 +28,14 @@ class TextStyles {
     fontWeight: FontWeightHelper.medium,
     color: AppColor.darkBlue,
   );
+  static TextStyle font14DarkBlueMedium = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeightHelper.medium,
+    color: AppColor.darkBlue,
+  );
+  static TextStyle font14LightGrayRegular = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeightHelper.regular,
+    color: AppColor.lightGray,
+  );
 }

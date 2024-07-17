@@ -14,4 +14,7 @@ class ProductState with _$ProductState {
 
   //search
   const factory ProductState.search(List<Product>? responseProduct) = Search;
+
+  //favorite
+  const factory ProductState.favorite() = Favorite;
 }
