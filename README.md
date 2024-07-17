@@ -5,8 +5,14 @@
 
 - Application to Show Product.
 ## 🚀 Future
-
-
+- get products and handle dio
+- get prodcts from cache sharedPreferences
+- add and remove favorite
+- Run the application online and offline
+- dev_dependencies get_it
+- handle Networking in core
+- handle responsive
+- handle failer online and offline
 
 ## 🤳 Screens
 
