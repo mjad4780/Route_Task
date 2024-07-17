@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:route_task/core/extensions/extention_navigator.dart';
 import 'package:route_task/future/product/logic/product_cubit.dart';
 import 'package:route_task/future/product/ui/widget/card_product.dart';
 
@@ -41,7 +42,7 @@ class ProductBlocListener extends StatelessWidget {
             }
           },
           error: (error) {
-            return Text(error);
+            return setupErrorState(context, error);
             // setupErrorState(context, error);
           },
           orElse: () {
@@ -53,32 +54,32 @@ class ProductBlocListener extends StatelessWidget {
     );
   }
 
-  void setupErrorState(BuildContext context, String error) {
-    // context.pop();
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        icon: const Icon(
-          Icons.error,
-          color: Colors.red,
-          size: 32,
-        ),
-        content: Text(
-          error,
-          style: TextStyles.font15DarkBlueMedium,
-        ),
-        actions: [
-          TextButton(
-            onPressed: () {
-              // context.pop();
-            },
-            child: Text(
-              'Got it',
-              style: TextStyles.font14BlueSemiBold,
-            ),
-          ),
-        ],
+  Widget setupErrorState(BuildContext context, String error) {
+    // showDialog(
+    //   context: context,
+    //   builder: (context) =>
+    return AlertDialog(
+      icon: const Icon(
+        Icons.error,
+        color: Colors.red,
+        size: 32,
       ),
+      content: Text(
+        error,
+        style: TextStyles.font15DarkBlueMedium,
+      ),
+      actions: [
+        TextButton(
+          onPressed: () {
+            context.read<ProductCubit>().getproduct();
+          },
+          child: Text(
+            'Agin too',
+            style: TextStyles.font14BlueSemiBold,
+          ),
+        ),
+      ],
+      // ),
     );
   }
 }

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:route_task/core/helpers/cache_helper.dart';
 import 'package:route_task/core/utils/app_assets.dart';
 
 import '../../../core/get_it/get_it.dart';
+import '../../../core/helpers/cache_helper.dart';
+import '../../../core/helpers/spacing.dart';
 import 'widget/product_bloc_listener.dart';
 import 'widget/search_and_cart_component.dart';
 
@@ -34,14 +35,8 @@ class ProductScreen extends StatelessWidget {
             ),
 
             const SearchAndCartComponent(),
-            // const ProductBlocListener(),
-            // const SearchBlocListener(),
-
+            verticalSpace(12),
             const ProductBlocListener(),
-            // CardProduct(
-            //     product: context.read<ProductCubit>().searchData!.isEmpty
-            //         ? context.read<ProductCubit>().products!
-            //         : context.read<ProductCubit>().searchData!),
             IconButton(
                 onPressed: () {
                   getIt<CacheHelper>().clearData();
@@ -50,6 +45,7 @@ class ProductScreen extends StatelessWidget {
           ]),
         ),
       ),
+
       // const SearchBlocListener(),
 
       // Search Product And Add Product To Cart

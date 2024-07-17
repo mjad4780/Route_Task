@@ -1,14 +1,9 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconly/iconly.dart';
-import 'package:route_task/core/get_it/get_it.dart';
-import 'package:route_task/core/helpers/cache_helper.dart';
-import 'package:route_task/future/product/logic/product_cubit.dart';
-import 'package:route_task/future/product/logic/product_state.dart';
-import 'package:cached_network_image/cached_network_image.dart';
-
 import '../../../../core/utils/app_colors.dart';
+import 'favorite.dart';
 
 class ProductComponent extends StatelessWidget {
   const ProductComponent({
@@ -47,59 +42,25 @@ class ProductComponent extends StatelessWidget {
             // Image And Heart Icon
             Stack(
               children: [
-                Padding(
-                  padding: const EdgeInsets.all(1.0),
-                  child: image.isNotEmpty
-                      ? CachedNetworkImage(
-                          imageUrl: image,
-                          fit: BoxFit.cover,
-                          height: 80.w,
-                          width: double.infinity,
-                        )
-                      : const Icon(
-                          Icons.error,
-                          size: 25,
-                        ),
-                ),
+                // Image And Error Image
+                // Padding(
+                //   padding: const EdgeInsets.all(1.0),
+                //   child: image.isNotEmpty
+                //       ? CachedNetworkImage(
+                //           imageUrl: image,
+                //           fit: BoxFit.cover,
+                //           height: 80.w,
+                //           width: double.infinity,
+                //         )
+                //       : const Icon(
+                //           Icons.error,
+                //           size: 25,
+                //         ),
+                // ),
 
                 // Heart Icon
-                BlocConsumer<ProductCubit, ProductState>(
-                  listener: (context, state) {},
-                  builder: (context, state) {
-                    return Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Align(
-                        alignment: Alignment.topRight,
-                        child: GestureDetector(
-                          onTap: () =>
-                              context.read<ProductCubit>().favorite(id),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color:
-                                  getIt<CacheHelper>().getData(key: 'id') == id
-                                      ? AppColor.red
-                                      : AppColor.white,
-                              borderRadius: BorderRadius.circular(50),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey.withOpacity(0.5),
-                                  spreadRadius: 3,
-                                  blurRadius: 7,
-                                  offset: const Offset(0, 2),
-                                ),
-                              ],
-                            ),
-                            child: const Padding(
-                              padding: EdgeInsets.all(4.0),
-                              child: Icon(
-                                IconlyLight.heart,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    );
-                  },
+                Favorite(
+                  id: id,
                 )
               ],
             ),

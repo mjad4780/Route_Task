@@ -1,6 +1,8 @@
 import 'error_model.dart';
 import 'package:dio/dio.dart';
 
+import 'failure.dart';
+
 //!ServerException
 class ServerException implements Exception {
   final ErrorModel errorModel;
@@ -62,15 +64,16 @@ class UnknownException extends ServerException {
 }
 
 class ErrorHandler implements Exception {
-  late ErrorModel errorModel;
+  ErrorModel? errorModel;
+  String? failerCache;
 
-  ErrorHandler.handle(dynamic error) {
+  ErrorHandler.handle(dynamic error, [this.failerCache]) {
     if (error is DioException) {
       // dio error so its an error from response of the API or from dio itself
       errorModel = _handleDioException(error);
     } else {
       // default error
-      errorModel = ErrorModel.fromJson(error);
+      failerCache = failerCache;
     }
   }
 }

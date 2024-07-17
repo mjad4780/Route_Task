@@ -28,16 +28,16 @@ class CacheHelpers {
   static Future<List<Product>> getCachedRocketsData() async {
     final cachedRockets = getIt<CacheHelper>().getData(key: 'product');
     List<Product> product = [];
-    if (cachedRockets != null) {
-      List decodeJsonData = json.decode(cachedRockets);
-      product = decodeJsonData
-          .map(
-            (json) => Product.fromJson(json),
-          )
-          .toList();
-      return product;
-    } else {
-      throw CacheExeption(errorMessage: "No Internet Connection");
-    }
+    // if (cachedRockets != null) {
+    List decodeJsonData = json.decode(cachedRockets);
+    product = decodeJsonData
+        .map(
+          (json) => Product.fromJson(json),
+        )
+        .toList();
+    return product;
+    // } else {
+    //   throw CacheExeption(errorMessage: "No Internet Connection");
+    // }
   }
 }
