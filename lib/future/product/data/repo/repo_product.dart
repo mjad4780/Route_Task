@@ -30,14 +30,17 @@ class RepoProduct {
         return ApiResult.failure(ErrorHandler.handle(e));
       }
     } else {
-      try {
-        final product = await CacheHelpers.getCachedRocketsData();
-        print('bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb$product');
-        return ApiResult.success(product);
-      } catch (e) {
-        return ApiResult.failure(
-            ErrorHandler.handle(e, "No Internet Connection"));
-      }
+      return await handleCache();
+    }
+  }
+
+  Future<ApiResult<List<Product>?>> handleCache() async {
+    try {
+      final product = await CacheHelpers.getCachedRocketsData();
+      return ApiResult.success(product);
+    } catch (e) {
+      return ApiResult.failure(
+          ErrorHandler.handle(e, "No Internet Connection"));
     }
   }
 }
